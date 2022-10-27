@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Project to test the hability of the coop to solve basic problems",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "dev": "NODE_ENV=dev node src/index.js",
     "test": "mocha"
@@ -22,10 +23,11 @@
   "homepage": "https://bitbucket.org/developmentOneZero/fileteste#readme",
   "dependencies": {
     "koa": "^2.13.0",
-    "koa-router": "^9.4.0",
-    "sqlite3": "^5.1.2",
     "koa-body": "^5.0.0",
-    "koa-bodyparser": "^4.3.0"
+    "koa-bodyparser": "^4.3.0",
+    "koa-router": "^9.4.0",
+    "sqlite": "^4.1.2",
+    "sqlite3": "^5.1.2"
   },
   "devDependencies": {
     "chai": "^4.2.0",

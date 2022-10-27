@@ -1,5 +1,6 @@
-const Router = require('koa-router');
-const koaBody = require('koa-body')();
+import Router from 'koa-router';
+import koaBody from 'koa-body';
+import { server } from './index.js';
 
 var router = new Router();
 
@@ -7,4 +8,4 @@ router.get('/', async (ctx) => {
     ctx.body = `Seu servidor esta rodando em http://localhost:3000`;
 });
 
-module.exports = router;
+export default router;

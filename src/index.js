@@ -5,14 +5,13 @@
 //https://github.com/ZijianHe/koa-router
 
 // todas as configuraçoes devem ser passadas via environment variables
-//const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000;
 
-const Koa = require('koa');
-const bodyParser = require('koa-bodyparser');
-const Router = require('./routes');
+import Koa from 'koa';
+import bodyParser from 'koa-bodyparser';
+import Router from './routes.js';
 
 const koa = new Koa();
-
 
 
 //Uma rota de exemplo simples aqui.
@@ -27,6 +26,5 @@ koa
   .use(Router.allowedMethods())
   .use(bodyParser());
 
-const server = koa.listen(3000);
+export const server = koa.listen(PORT);
 
-module.exports = server;
