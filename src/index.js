@@ -7,9 +7,9 @@
 // todas as configuraçoes devem ser passadas via environment variables
 const PORT = process.env.PORT || 3000;
 
-import Koa from 'koa';
-import bodyParser from 'koa-bodyparser';
-import Router from './routes.js';
+const Koa = require('koa');
+const bodyParser = require('koa-bodyparser');
+const Router = require('./routes');
 
 const koa = new Koa();
 
@@ -26,5 +26,4 @@ koa
   .use(Router.allowedMethods())
   .use(bodyParser());
 
-export const server = koa.listen(PORT);
-
+const server = koa.listen(PORT);
