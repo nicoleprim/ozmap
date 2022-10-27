@@ -14,3 +14,7 @@ exports.create = async (ctx) => {
   ctx.response.body = user
 };
 
+exports.getAllUsers = async (ctx) => {
+  const getUsers = await User.getAll();
+  ctx.response.body = getUsers;
+}
