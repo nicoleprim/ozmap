@@ -12,4 +12,6 @@ router.get('/users', koaBody, userController.getAllUsers);
 
 router.post('/users', koaBody, userController.create);
 
+router.put('/users/:nameuser', koaBody, userController.editByName);
+
 module.exports = router;

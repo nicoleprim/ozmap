@@ -18,3 +18,23 @@ exports.getAllUsers = async (ctx) => {
   const getUsers = await User.getAll();
   ctx.response.body = getUsers;
 }
+
+exports.editByName = async (ctx) => {
+  const { nameuser } = ctx.request.params;
+  const {
+    name, email, age, password
+  } = ctx.request.body;
+
+  const newUser = new User(name, email, age, password)
+  const getUsers = await User.getAll();
+
+  const useredit = getUsers.map((user) => {
+    if (nameuser === user.name) {
+      return newUser
+    }
+  })
+
+  ctx.response.body = useredit;
+
+};
+
