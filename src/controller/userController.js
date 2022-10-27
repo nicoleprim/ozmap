@@ -38,3 +38,14 @@ exports.editByName = async (ctx) => {
 
 };
 
+exports.deleteByName = async (ctx) => {
+  const { nameuser } = ctx.request.params;
+
+  const getUsers = await User.getAll();
+
+  const filterusers = getUsers.filter((user) => {
+    return nameuser !== user.name
+  })
+
+  ctx.response.body = filterusers;
+};
