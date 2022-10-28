@@ -1,14 +1,3 @@
-//sample test
-//Para rodar os testes, use: npm test
-//PS: Os testes não estão completos e alguns podem comnter erros.
-
-// veja mais infos em:
-//https://mochajs.org/
-//https://www.chaijs.com/
-//https://www.chaijs.com/plugins/chai-json-schema/
-//https://developer.mozilla.org/pt-PT/docs/Web/HTTP/Status (http codes)
-
-const app =  require('../src/index.js');
 
 const assert = require('assert');
 const chai = require('chai')
@@ -20,35 +9,13 @@ chai.use(chaiJson);
 
 const expect = chai.expect;
 
-//Define o minimo de campos que o usuário deve ter. Geralmente deve ser colocado em um arquivo separado
-const userSchema = {
-    title: "Schema do Usuario, define como é o usuario, linha 24 do teste",
-    type: "object",
-    required: ['nome', 'email', 'idade'],
-    properties: {
-        nome: {
-            type: 'string'
-        },
-        email: {
-            type: 'string'
-        },
-        idade: {
-            type: 'number',
-            minimum: 18
-        }
-    }
-}
 
-//Inicio dos testes
-
-//este teste é simplesmente pra enteder a usar o mocha/chai
 describe('Um simples conjunto de testes', function () {
     it('deveria retornar -1 quando o valor não esta presente', function () {
         assert.equal([1, 2, 3].indexOf(4), -1);
     });
 });
 
-//testes da aplicação
 describe('Testes da aplicaçao',  () => {
     it('o servidor esta online', function (done) {
         chai.request('http://localhost:3000')
@@ -166,13 +133,11 @@ describe('Testes da aplicaçao',  () => {
             done();
         });
     });
-    //...adicionar pelo menos mais 5 usuarios. se adicionar usuario menor de idade, deve dar erro. Ps: não criar o usuario naoExiste
 
     it('o usuario naoExiste não existe no sistema', function (done) {
         chai.request('http://localhost:3000')
         .get('/users/naoExiste')
         .end(function (err, res) {
-          //  expect(err.response.body.error).to.be.equal('User not found'); //possivelmente forma errada de verificar a mensagem de erro
             expect(res).to.have.status(404);
             expect(res.body).to.be.jsonSchema([]);
             done();
