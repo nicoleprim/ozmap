@@ -10,7 +10,7 @@ O objetivo do projeto é, usando o NodeJs, Koa, Mocha e Chai, fazer uma API que 
 - Mocha
 - Chai
 
-## Para rodar o projeto:
+### Para rodar o projeto:
 
 Para rodar o projeto localmente deve ser realizado o git clone e rodar os seguintes comandos:
 ```
