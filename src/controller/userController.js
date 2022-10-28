@@ -9,6 +9,10 @@ exports.create = async (ctx) => {
     throw new Error("Informe todos os parâmetros")
   }
 
+  if (age < 18) {
+    throw new Error("A idade mínima é de 18 anos")
+  }
+
   const user = new User(name, email, age, password);
 
   ctx.response.body = user
@@ -49,3 +53,18 @@ exports.deleteByName = async (ctx) => {
 
   ctx.response.body = filterusers;
 };
+
+exports.getUserByName = async (ctx) => {
+  const { nameuser } = ctx.request.params;
+
+  const getUsers = await User.getAll();
+
+  const filterusers = getUsers.filter((user) => {
+    if (nameuser === user.name) {
+      return user
+    } 
+  })
+
+  ctx.response.body = filterusers;
+
+}
